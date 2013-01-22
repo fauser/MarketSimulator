@@ -3,22 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Market;
 
-namespace MarketSimulator
+namespace Common.Market
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Market.Market m = new Market.Market();
-            m.init();
+            //Market m = new Market();
+            //m.init();
+
+            bool simulationStarted = false;
 
             while (true)
             {
                 ConsoleKey lastKey = Console.ReadKey().Key;
 
-                if (lastKey == ConsoleKey.Escape)
-                    break;
+
+                switch (lastKey)
+                {
+                    case ConsoleKey.A:
+                        if (!simulationStarted)
+                        {
+                            Console.Clear();
+                            //Console.WriteLine(m.ListCustomers());
+                        }
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.WriteLine("Terminating");
+                        simulationStarted = false;
+                        Console.ReadKey();
+                        return;
+                    case ConsoleKey.S:
+                        if (!simulationStarted)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Starting simulation");
+                            simulationStarted = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
     }
