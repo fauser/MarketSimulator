@@ -11,44 +11,30 @@ namespace Common.Market
     {
         static void Main(string[] args)
         {
-            //Market m = new Market();
-            //m.init();
+            Simulation sim = new Simulation(DateTime.Parse("2013-01-01"), DateTime.Parse("2013-01-31"));
+            sim.World.AddEvent(new WorldEvent(DateTime.Parse("2013-01-01")));
 
-            bool simulationStarted = false;
+            Supplier s = new Supplier("Agda", 1);
+            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
+            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
+            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-05"), ModuleEnum.Payroll, SeverityEnum.Catastrophic));
+            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-08"), ModuleEnum.Payroll, SeverityEnum.NoEffect));
+            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-20"), ModuleEnum.Expence, SeverityEnum.Minor));
+            sim.AddSupplier(s.Clone());
 
-            while (true)
-            {
-                ConsoleKey lastKey = Console.ReadKey().Key;
+            Customer c = new Customer("Metso", new ModuleEnum[] { ModuleEnum.Payroll });
+            sim.AddCustomer(c.Clone());
+
+            c = new Customer("Bring Frigo", new ModuleEnum[] { ModuleEnum.Payroll, ModuleEnum.Expence });
+            sim.AddCustomer(c.Clone());
+
+            Console.WriteLine("Simulating");
+            sim.PrintSuppliers();
+            sim.PrintCustomers();
+            sim.Simulate();
 
 
-                switch (lastKey)
-                {
-                    case ConsoleKey.A:
-                        if (!simulationStarted)
-                        {
-                            Console.Clear();
-                            //Console.WriteLine(m.ListCustomers());
-                        }
-                        break;
-                    case ConsoleKey.Escape:
-                        Console.Clear();
-                        Console.WriteLine("Terminating");
-                        simulationStarted = false;
-                        Console.ReadKey();
-                        return;
-                    case ConsoleKey.S:
-                        if (!simulationStarted)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Starting simulation");
-                            simulationStarted = true;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-            }
+            Console.ReadKey();
         }
     }
 }
