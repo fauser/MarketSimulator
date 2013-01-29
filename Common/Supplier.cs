@@ -18,7 +18,6 @@ namespace Common
             Capacity = capacity;
 
             SupplierEvents = new Dictionary<DateTime, List<SupplierEvent>>();
-
         }
 
         public void AddEvent(Event addThis)
@@ -31,18 +30,25 @@ namespace Common
                 }
                 SupplierEvents[addThis.Date].Add((SupplierEvent)addThis);//.clone();
             }
-
         }
 
         internal void Simulate(DateTime date, World World)
         {
+            //foreach (SupplierEvent se in this.SupplierEvents[date])
+            {
+                //if (se is CustomerFoundErrorEvent)
+                {
+                    
+                }
 
+            }
         }
 
         public Supplier Clone()
         {
             Supplier s = new Supplier(this.Name, this.Capacity);
-
+            s.SupplierEvents = (from x in this.SupplierEvents
+                                select x).ToDictionary(x => x.Key, x => x.Value);
             return s;
         }
     }

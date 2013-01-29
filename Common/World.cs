@@ -27,7 +27,7 @@ namespace Common
         }
 
 
-        internal static void Simulate(DateTime d)
+        internal static void Update(DateTime d)
         {
             //
         }

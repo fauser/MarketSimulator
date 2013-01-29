@@ -28,19 +28,18 @@ namespace Common
         public Customer Clone()
         {
             Customer tmp = new Customer(this.Name, this.Modules);
+            tmp.CustomerEvents = (from x in this.CustomerEvents
+                                  select x).ToDictionary(x => x.Key, x => x.Value);
             return tmp;
         }
 
-        public void AddEvent(Event addThis)
+        public void AddEvent(CustomerEvent addThis)
         {
-            if (addThis is CustomerEvent)
+            if (!CustomerEvents.ContainsKey(addThis.Date))
             {
-                if (!CustomerEvents.ContainsKey(addThis.Date))
-                {
-                    CustomerEvents[addThis.Date] = new List<CustomerEvent>();
-                }
-                CustomerEvents[addThis.Date].Add((CustomerEvent)addThis);//.clone();
+                CustomerEvents[addThis.Date] = new List<CustomerEvent>();
             }
+            CustomerEvents[addThis.Date].Add((CustomerEvent)addThis);//.clone();
         }
 
         internal void Simulate(DateTime date, World world, List<Supplier> suppliers)
@@ -58,6 +57,7 @@ namespace Common
 
         private void ChangeValuesAccordingToEvent(SupplierEvent e)
         {
+            /*
             if (this.Modules.Contains(e.Module))
             {
                 if (e.Severity != SeverityEnum.NoEffect)
@@ -74,7 +74,7 @@ namespace Common
                             break;
                     }
                 }
-            }
+            }*/
         }
 
         private void DecreaseSatisfactionalLevel(SeverityEnum severity)

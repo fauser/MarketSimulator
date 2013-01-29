@@ -41,7 +41,7 @@ namespace Common
                 Console.WriteLine("Simulating " + d.ToShortDateString());
 
                 Console.WriteLine("Simulating world");
-                World.Simulate(d);
+                World.Update(d);
 
                 Console.WriteLine("Simulating supplier events");
                 foreach (Supplier s in Suppliers)

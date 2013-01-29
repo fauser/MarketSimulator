@@ -8,18 +8,10 @@ namespace Common
 {
     public abstract class SupplierEvent : Event
     {
-        public SupplierEventTypeEnum EventType { get; set; }
-        public ModuleEnum Module { get; set; }
-        public SeverityEnum Severity { get; set; }
-
-
-        public SupplierEvent(DateTime dateTime, SupplierEventTypeEnum type, ModuleEnum module, SeverityEnum severity)
+        public SupplierEvent(DateTime dateTime)
             : base(dateTime)
         {
-            EventType = type;
-            Module = module;
-            Severity = severity;
-        }
 
+        }
     }
 }

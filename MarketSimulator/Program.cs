@@ -12,14 +12,14 @@ namespace Common.Market
         static void Main(string[] args)
         {
             Simulation sim = new Simulation(DateTime.Parse("2013-01-01"), DateTime.Parse("2013-01-31"));
-            sim.World.AddEvent(new WorldEvent(DateTime.Parse("2013-01-01")));
+            //sim.World.AddEvent(new WorldEvent(DateTime.Parse("2013-01-01")));
 
             Supplier s = new Supplier("Agda", 1);
-            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
-            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
-            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-05"), ModuleEnum.Payroll, SeverityEnum.Catastrophic));
-            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-08"), ModuleEnum.Payroll, SeverityEnum.NoEffect));
-            s.AddEvent(new SupplierErrorEvent(DateTime.Parse("2013-01-20"), ModuleEnum.Expence, SeverityEnum.Minor));
+            //s.AddEvent(new CustomerFoundErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
+            //s.AddEvent(new CustomerFoundErrorEvent(DateTime.Parse("2013-01-03"), ModuleEnum.Expence, SeverityEnum.Major));
+            //s.AddEvent(new CustomerFoundErrorEvent(DateTime.Parse("2013-01-05"), ModuleEnum.Payroll, SeverityEnum.Catastrophic));
+            //s.AddEvent(new CustomerFoundErrorEvent(DateTime.Parse("2013-01-08"), ModuleEnum.Payroll, SeverityEnum.NoEffect));
+            //s.AddEvent(new CustomerFoundErrorEvent(DateTime.Parse("2013-01-20"), ModuleEnum.Expence, SeverityEnum.Minor));
             sim.AddSupplier(s.Clone());
 
             Customer c = new Customer("Metso", new ModuleEnum[] { ModuleEnum.Payroll });
