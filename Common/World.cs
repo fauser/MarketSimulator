@@ -6,30 +6,20 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class World
+    public class World : SimulatedObject
     {
-        public Dictionary<DateTime, List<WorldEvent>> WorldEvents { get; set; }
 
         public World()
+            : base()
         {
-            WorldEvents = new Dictionary<DateTime, List<WorldEvent>>();
         }
 
-        public void AddEvent(WorldEvent addThis)
+        internal override void Simulate(Effect.Effect ef)
         {
-
-            if (!WorldEvents.ContainsKey(addThis.Date))
+            if (ef is Effect.WorldEffect)
             {
-                WorldEvents[addThis.Date] = new List<WorldEvent>();
+                Console.WriteLine(String.Format("{0}, {1}", "           World affected", ef.ToString()));
             }
-            WorldEvents[addThis.Date].Add((WorldEvent)addThis);//.clone();
-
-        }
-
-
-        internal static void Update(DateTime d)
-        {
-            //
         }
     }
 }

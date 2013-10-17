@@ -40,19 +40,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="CustomerEvent.cs" />
-    <Compile Include="CustomerFireEmployeesEvent.cs" />
+    <Compile Include="Effect\CustomerEffect.cs" />
+    <Compile Include="Effect\SupplierEffect.cs" />
+    <Compile Include="Effect\SupplierEffectSteppingUpToTheChallenge.cs" />
+    <Compile Include="Effect\WorldEffect.cs" />
+    <Compile Include="Effect\CustomerEffectNotVeryFond.cs" />
+    <Compile Include="Effect\CustomerEffectNewHero.cs" />
+    <Compile Include="Event\CustomerEvent.cs" />
+    <Compile Include="Event\CustomerEventFireEmployees.cs" />
+    <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Effect\WorldEffectFightForYourLife.cs" />
+    <Compile Include="Event\SupplierEventManifestingDefence.cs" />
+    <Compile Include="SimulatedObject.cs" />
     <Compile Include="World.cs" />
-    <Compile Include="WorldEvent.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="SupplierEventTypeEnum.cs" />
+    <Compile Include="Event\WorldEvent.cs" />
+    <Compile Include="Event\Event.cs" />
+    <Compile Include="Event\SupplierEventTypeEnum.cs" />
     <Compile Include="ModuleEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeverityEnum.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="Supplier.cs" />
-    <Compile Include="CustomerFoundErrorEvent.cs" />
-    <Compile Include="SupplierEvent.cs" />
+    <Compile Include="Event\CustomerEventFoundError.cs" />
+    <Compile Include="Event\SupplierEvent.cs" />
+    <Compile Include="Event\WorldEventZombieApocalysm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
